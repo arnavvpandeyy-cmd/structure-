@@ -1,0 +1,553 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Chikitsaalye helps patients check real-time doctor availability, OPD schedules, and queue status at government hospitals. Smarter coordination for patients, doctors, and hospital administration.">
+  <title>Chikitsaalye — Real-Time Doctor Availability &amp; OPD Coordination</title>
+  <link rel="stylesheet" href="styles/tokens.css">
+  <link rel="stylesheet" href="styles/base.css">
+  <link rel="stylesheet" href="styles/components.css">
+  <link rel="stylesheet" href="styles/layout.css">
+  <link rel="stylesheet" href="styles/homepage.css">
+  <style>
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .revealed { opacity: 1; transform: none; }
+    @keyframes slideIn { from { transform: translateX(20px); opacity: 0; } to { transform: none; opacity: 1; } }
+  </style>
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <!-- ── PUBLIC NAV ─────────────────────────────────────────── -->
+  <nav class="public-nav" role="navigation" aria-label="Main navigation">
+    <div class="public-nav-inner">
+      <a href="index.html" class="nav-logo" aria-label="Chikitsaalye home">
+        <div class="nav-logo-mark" aria-hidden="true">⚕</div>
+        <div class="nav-logo-text">
+          <span class="nav-logo-name">Chikitsaalye</span>
+          <span class="nav-logo-tagline">Hospital Coordination Platform</span>
+        </div>
+      </a>
+
+      <div class="nav-links" role="list">
+        <a href="how-it-works.html" class="nav-link" role="listitem">How It Works</a>
+        <a href="for-patients.html"  class="nav-link" role="listitem">For Patients</a>
+        <a href="for-doctors.html"   class="nav-link" role="listitem">For Doctors</a>
+        <a href="for-hospitals.html" class="nav-link" role="listitem">For Hospitals</a>
+        <a href="#features"          class="nav-link" role="listitem">Features</a>
+        <a href="about.html"         class="nav-link" role="listitem">About</a>
+      </div>
+
+      <div class="nav-actions">
+        <a href="patient-dashboard.html" class="btn btn-ghost btn-sm">Patient Sign In</a>
+        <a href="doctor-dashboard.html"  class="btn btn-outline btn-sm">Doctor Sign In</a>
+        <a href="admin-dashboard.html"   class="btn btn-navy btn-sm">Hospital Admin</a>
+        <button class="mobile-menu-btn btn btn-ghost btn-icon" id="mobile-menu-btn" aria-label="Open menu" aria-expanded="false">
+          <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" d="M4 6h16M4 12h16M4 18h16"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile nav -->
+    <div id="mobile-nav" class="hidden" style="background:white;border-top:1px solid var(--border-light);padding:16px;">
+      <div style="display:flex;flex-direction:column;gap:4px;">
+        <a href="how-it-works.html" class="nav-link">How It Works</a>
+        <a href="for-patients.html"  class="nav-link">For Patients</a>
+        <a href="for-doctors.html"   class="nav-link">For Doctors</a>
+        <a href="for-hospitals.html" class="nav-link">For Hospitals</a>
+        <a href="#features"          class="nav-link">Features</a>
+        <a href="about.html"         class="nav-link">About</a>
+        <div class="divider"></div>
+        <a href="patient-dashboard.html" class="btn btn-outline w-full" style="justify-content:center">Patient Sign In</a>
+        <a href="doctor-dashboard.html"  class="btn btn-outline w-full" style="justify-content:center">Doctor Sign In</a>
+        <a href="admin-dashboard.html"   class="btn btn-navy w-full"    style="justify-content:center">Hospital Admin</a>
+      </div>
+    </div>
+  </nav>
+
+  <main id="main-content">
+
+    <!-- ── HERO ──────────────────────────────────────────────── -->
+    <section class="hero" aria-labelledby="hero-heading">
+      <div class="hero-bg-pattern" aria-hidden="true"></div>
+      <div class="hero-grid-overlay" aria-hidden="true"></div>
+      <div class="hero-inner">
+        <div class="hero-kicker" aria-label="Platform category">
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="currentColor"><circle cx="6" cy="6" r="6"/></svg>
+          For Government Hospitals &amp; Medical Colleges
+        </div>
+
+        <h1 id="hero-heading" class="hero-headline">
+          Know who's available.<br>
+          Know how long the <span class="hl-teal">wait is</span>.<br>
+          Get the care you need.
+        </h1>
+
+        <p class="hero-subhead">
+          Chikitsaalye gives patients real-time OPD queue status and doctor availability, helps doctors manage their clinical workload, and gives hospital administration visibility into daily patient flow — all in one platform built for public health.
+        </p>
+
+        <div class="hero-actions">
+          <a href="patient-dashboard.html" class="btn btn-primary btn-xl" id="hero-patient-cta">
+            Check OPD Status →
+          </a>
+          <a href="#how-it-works" class="btn btn-outline-navy btn-xl" style="border-color:rgba(255,255,255,0.3);color:rgba(255,255,255,0.85);" id="hero-learn-cta">
+            How It Works
+          </a>
+        </div>
+
+        <div class="hero-stat-row" aria-label="Platform statistics">
+          <div class="hero-stat">
+            <div class="hero-stat-val" data-count="38" data-suffix="+" id="stat-hospitals">38+</div>
+            <div class="hero-stat-label">Government Hospitals</div>
+          </div>
+          <div class="hero-stat">
+            <div class="hero-stat-val" data-count="4200" data-suffix="+" id="stat-daily">4,200+</div>
+            <div class="hero-stat-label">Patients Served Daily</div>
+          </div>
+          <div class="hero-stat">
+            <div class="hero-stat-val" data-count="12" data-suffix=" Districts">12 Districts</div>
+            <div class="hero-stat-label">Across Maharashtra</div>
+          </div>
+          <div class="hero-stat">
+            <div class="hero-stat-val" data-count="34" data-suffix="% less" id="stat-wait">34% less</div>
+            <div class="hero-stat-label">Average Waiting Time</div>
+          </div>
+        </div>
+
+        <div class="hero-dashboard-preview">
+          <div class="hero-preview-label">Live OPD status — Right now</div>
+          <div class="hero-preview-frame" id="hero-preview-content">
+            <!-- Rendered by homepage.js -->
+            <div style="text-align:center;padding:40px;color:#9CA3AF;font-size:14px;">Loading live data…</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── TRUST BAR ─────────────────────────────────────────── -->
+    <section class="trust-bar" aria-labelledby="trust-heading">
+      <div class="trust-bar-inner">
+        <div class="trust-item">
+          <div class="trust-item-icon" aria-hidden="true">🏛</div>
+          <div class="trust-item-text">
+            <div class="trust-item-val">Government</div>
+            <div class="trust-item-label">Public health focused</div>
+          </div>
+        </div>
+        <div class="trust-divider" aria-hidden="true"></div>
+        <div class="trust-item">
+          <div class="trust-item-icon" aria-hidden="true">🔒</div>
+          <div class="trust-item-text">
+            <div class="trust-item-val">ABDM Compliant</div>
+            <div class="trust-item-label">ABHA-linked health records</div>
+          </div>
+        </div>
+        <div class="trust-divider" aria-hidden="true"></div>
+        <div class="trust-item">
+          <div class="trust-item-icon" aria-hidden="true">📋</div>
+          <div class="trust-item-text">
+            <div class="trust-item-val">NHM &amp; PMJAY</div>
+            <div class="trust-item-label">Programme-integrated</div>
+          </div>
+        </div>
+        <div class="trust-divider" aria-hidden="true"></div>
+        <div class="trust-item">
+          <div class="trust-item-icon" aria-hidden="true">🌐</div>
+          <div class="trust-item-text">
+            <div class="trust-item-val">Hindi + Marathi</div>
+            <div class="trust-item-label">Multilingual interface</div>
+          </div>
+        </div>
+        <div class="trust-divider" aria-hidden="true"></div>
+        <div class="trust-item">
+          <div class="trust-item-icon" aria-hidden="true">📱</div>
+          <div class="trust-item-text">
+            <div class="trust-item-val">Works on 2G</div>
+            <div class="trust-item-label">Low-bandwidth optimised</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── PROBLEM → SOLUTION ─────────────────────────────────── -->
+    <section class="section problem-solution" id="how-it-works" aria-labelledby="ps-heading">
+      <div class="container">
+        <div class="section-intro reveal">
+          <div class="section-label">The Problem We Solve</div>
+          <h2 id="ps-heading">Public hospitals are overcrowded.<br>The information gap makes it worse.</h2>
+          <p>Patients arrive without knowing wait times. Doctors have no real-time workload view. Administrators can't see bottlenecks as they form.</p>
+        </div>
+
+        <div class="grid-2 reveal">
+          <div class="problem-side">
+            <div class="ps-title">
+              <span>❌</span> Without Chikitsaalye
+            </div>
+            <div class="ps-list">
+              <div class="ps-item"><span class="ps-item-icon">⏳</span> Patients wait 45–90 minutes without knowing if the doctor is even available</div>
+              <div class="ps-item"><span class="ps-item-icon">🗒</span> Doctors receive patients without prior context, repeating the same questions</div>
+              <div class="ps-item"><span class="ps-item-icon">📋</span> Paperwork is manual, misplaced, or duplicated across departments</div>
+              <div class="ps-item"><span class="ps-item-icon">🔀</span> Handoffs between OPD, lab, pharmacy, and ward happen verbally or on paper slips</div>
+              <div class="ps-item"><span class="ps-item-icon">🏥</span> Administrators have no visibility into patient flow until it's already a problem</div>
+              <div class="ps-item"><span class="ps-item-icon">📞</span> Referrals to other departments get lost or never closed</div>
+            </div>
+          </div>
+
+          <div class="solution-side">
+            <div class="ps-title">
+              <span>✅</span> With Chikitsaalye
+            </div>
+            <div class="ps-list">
+              <div class="ps-item"><span class="ps-item-icon">📲</span> Patients see real-time queue position, estimated wait, and doctor room number before arriving</div>
+              <div class="ps-item"><span class="ps-item-icon">💻</span> Doctors open consultations with patient context, past visits, and pending tasks already visible</div>
+              <div class="ps-item"><span class="ps-item-icon">🔁</span> Structured workflows replace paper slips for referrals, discharge, and lab collection</div>
+              <div class="ps-item"><span class="ps-item-icon">📊</span> Administrators see department load, wait trends, and discharge blockers in real time</div>
+              <div class="ps-item"><span class="ps-item-icon">🔔</span> Alerts surface only when action is needed — not noise, only signal</div>
+              <div class="ps-item"><span class="ps-item-icon">📁</span> Reports, prescriptions, and summaries are accessible digitally by the patient</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── ROLE CARDS ─────────────────────────────────────────── -->
+    <section class="section features-bg" id="for-patients" aria-labelledby="roles-heading">
+      <div class="container">
+        <div class="section-intro reveal">
+          <div class="section-label">Built for Every Role</div>
+          <h2 id="roles-heading">One platform.<br>Three clear experiences.</h2>
+          <p>Every role gets a tailored interface that surfaces exactly what matters to them — not a one-size-fits-all dashboard.</p>
+        </div>
+
+        <div class="role-cards-grid reveal">
+          <!-- PATIENT -->
+          <a href="patient-dashboard.html" class="role-card" id="role-card-patient" aria-label="View patient interface">
+            <div class="role-card-icon patient" aria-hidden="true">👤</div>
+            <div>
+              <div class="role-card-title">For Patients</div>
+              <div class="role-card-desc">Check waiting time before you travel. See your queue position, collect reports digitally, and get one clear next step at every stage.</div>
+            </div>
+            <div class="role-card-features" role="list">
+              <div class="role-feature" role="listitem">Live queue number and estimated wait</div>
+              <div class="role-feature" role="listitem">Appointment booking and follow-ups</div>
+              <div class="role-feature" role="listitem">Digital lab report access</div>
+              <div class="role-feature" role="listitem">Medicine schedule and task reminders</div>
+              <div class="role-feature" role="listitem">Hospital notices and messages</div>
+            </div>
+            <div class="role-card-cta">See patient interface →</div>
+          </a>
+
+          <!-- DOCTOR -->
+          <a href="doctor-dashboard.html" class="role-card" id="role-card-doctor" aria-label="View doctor interface">
+            <div class="role-card-icon doctor" aria-hidden="true">🩺</div>
+            <div>
+              <div class="role-card-title" id="for-doctors">For Government Doctors</div>
+              <div class="role-card-desc">A clinical action interface — not a metric board. See your queue, the next patient's context, pending tasks, alerts, and discharge queue in one view.</div>
+            </div>
+            <div class="role-card-features" role="list">
+              <div class="role-feature" role="listitem">OPD queue with patient context</div>
+              <div class="role-feature" role="listitem">Consultation notes and prescriptions</div>
+              <div class="role-feature" role="listitem">Pending labs, tasks, and alerts</div>
+              <div class="role-feature" role="listitem">Ward rounds and inpatient view</div>
+              <div class="role-feature" role="listitem">Discharge readiness tracking</div>
+            </div>
+            <div class="role-card-cta">See doctor interface →</div>
+          </a>
+
+          <!-- HOSPITAL -->
+          <a href="admin-dashboard.html" class="role-card" id="role-card-hospital" aria-label="View hospital admin interface">
+            <div class="role-card-icon hospital" aria-hidden="true">🏥</div>
+            <div>
+              <div class="role-card-title" id="for-hospitals">For Hospital Administration</div>
+              <div class="role-card-desc">Real-time operational visibility. See department load, bed occupancy, discharge blockers, referral status, and programme compliance as they happen.</div>
+            </div>
+            <div class="role-card-features" role="list">
+              <div class="role-feature" role="listitem">Live OPD load per department</div>
+              <div class="role-feature" role="listitem">Bed occupancy and discharge blockers</div>
+              <div class="role-feature" role="listitem">Wait time trends and bottlenecks</div>
+              <div class="role-feature" role="listitem">Referral and escalation tracking</div>
+              <div class="role-feature" role="listitem">NHM / PMJAY programme reporting</div>
+            </div>
+            <div class="role-card-cta">See admin interface →</div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── LIVE WORKFLOW DEMO ─────────────────────────────────── -->
+    <section class="demo-section" aria-labelledby="demo-heading">
+      <div class="demo-inner">
+        <div class="demo-header reveal">
+          <div class="section-label" style="color:#67E8F9;">Live Simulation</div>
+          <h2 id="demo-heading">This is what the OPD queue looks like — right now</h2>
+          <p>Patients see this before arriving. Doctors see this during their session. Administrators monitor this all day.</p>
+        </div>
+
+        <div class="demo-panel reveal">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;flex-wrap:wrap;gap:12px;">
+            <div>
+              <div style="font-size:13px;font-weight:600;color:white;margin-bottom:4px;">Rajiv Gandhi Govt. Medical College &amp; Hospital</div>
+              <div class="live-dot" style="font-size:12px;">Live queue data</div>
+            </div>
+            <div style="font-size:12px;color:rgba(255,255,255,0.4);">Updated every 60 seconds</div>
+          </div>
+
+          <div class="demo-dept-tabs" role="tablist" aria-label="OPD departments">
+            <button class="demo-dept-tab active" data-dept="med"   role="tab" aria-selected="true"  id="demo-tab-med">General Medicine</button>
+            <button class="demo-dept-tab"        data-dept="surg"  role="tab" aria-selected="false" id="demo-tab-surg">Surgery</button>
+            <button class="demo-dept-tab"        data-dept="peds"  role="tab" aria-selected="false" id="demo-tab-peds">Paediatrics</button>
+            <button class="demo-dept-tab"        data-dept="ortho" role="tab" aria-selected="false" id="demo-tab-ortho">Orthopaedics</button>
+          </div>
+
+          <div class="demo-queue" id="demo-queue-container" role="tabpanel" aria-live="polite">
+            <!-- Rendered by homepage.js -->
+          </div>
+
+          <div style="margin-top:20px;padding-top:16px;border-top:1px solid rgba(255,255,255,0.08);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;">
+            <div style="display:flex;align-items:center;gap:16px;font-size:12px;color:rgba(255,255,255,0.4);">
+              <span style="display:flex;align-items:center;gap:6px;"><span style="width:10px;height:10px;background:#059669;border-radius:2px;display:inline-block;"></span>Normal load</span>
+              <span style="display:flex;align-items:center;gap:6px;"><span style="width:10px;height:10px;background:#D97706;border-radius:2px;display:inline-block;"></span>Moderate</span>
+              <span style="display:flex;align-items:center;gap:6px;"><span style="width:10px;height:10px;background:#DC2626;border-radius:2px;display:inline-block;"></span>High load</span>
+            </div>
+            <a href="patient-dashboard.html" class="btn btn-primary btn-sm" id="demo-cta-patient">Check My Queue →</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── FEATURE GRID ───────────────────────────────────────── -->
+    <section class="section features-bg" id="features" aria-labelledby="features-heading">
+      <div class="container">
+        <div class="section-intro reveal">
+          <div class="section-label">Platform Capabilities</div>
+          <h2 id="features-heading">Built for the full care journey,<br>not just the appointment</h2>
+        </div>
+
+        <div class="feature-grid reveal">
+          <div class="feature-item">
+            <div class="feature-icon" aria-hidden="true">🔢</div>
+            <div class="feature-title">Real-Time Token &amp; Queue Status</div>
+            <div class="feature-desc">Patients see their position in queue, the current token being served, and estimated wait before they travel to the hospital.</div>
+          </div>
+          <div class="feature-item">
+            <div class="feature-icon" aria-hidden="true">📅</div>
+            <div class="feature-title">OPD Schedule &amp; Availability</div>
+            <div class="feature-desc">Up-to-date doctor availability, OPD days, session timings, and room numbers for all departments.</div>
+          </div>
+          <div class="feature-item">
+            <div class="feature-icon" aria-hidden="true">🗂</div>
+            <div class="feature-title">Digital Health Records</div>
+            <div class="feature-desc">ABHA-linked patient records with prescription history, past visits, allergies, and chronic conditions visible at point of care.</div>
+          </div>
+          <div class="feature-item">
+            <div class="feature-icon" aria-hidden="true">🧪</div>
+            <div class="feature-title">Lab Report Tracking</div>
+            <div class="feature-desc">Patients track lab orders from collection to result. Doctors receive notifications when critical values arrive.</div>
+          </div>
+          <div class="feature-item">
+            <div class="feature-icon" aria-hidden="true">🔔</div>
+            <div class="feature-title">Targeted Alerts</div>
+            <div class="feature-desc">Doctors receive alerts for critical lab values, deteriorating ward patients, and urgent pending tasks — not general noise.</div>
+          </div>
+          <div class="feature-item">
+            <div class="feature-icon" aria-hidden="true">🏨</div>
+            <div class="feature-title">Bed &amp; Discharge Management</div>
+            <div class="feature-desc">Ward staff and administrators see bed status, discharge-ready patients, and blockers causing delays in real time.</div>
+          </div>
+          <div class="feature-item">
+            <div class="feature-icon" aria-hidden="true">🔄</div>
+            <div class="feature-title">Referral Workflow</div>
+            <div class="feature-desc">Structured referrals between departments with tracking, closure confirmation, and audit trail — no paper slips lost in transit.</div>
+          </div>
+          <div class="feature-item">
+            <div class="feature-icon" aria-hidden="true">📊</div>
+            <div class="feature-title">Operational Analytics</div>
+            <div class="feature-desc">Administrators see wait-time trends, registration-to-consult time, department throughput, and bottlenecks forming in real time.</div>
+          </div>
+          <div class="feature-item">
+            <div class="feature-icon" aria-hidden="true">📋</div>
+            <div class="feature-title">Programme Integration</div>
+            <div class="feature-desc">NHM, RNTCP (TB), PMJAY, and NCD programme tracking integrated into daily OPD workflow — not a separate reporting system.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── IMPACT SECTION ─────────────────────────────────────── -->
+    <section class="section impact-section" aria-labelledby="impact-heading">
+      <div class="container">
+        <div class="section-intro reveal">
+          <div class="section-label">Operational Impact</div>
+          <h2 id="impact-heading">Measured improvements in real hospitals</h2>
+        </div>
+
+        <div class="impact-grid reveal">
+          <div class="impact-card">
+            <div class="impact-val" data-count="34" data-suffix="%" id="impact-1">34%</div>
+            <div class="impact-label">Reduction in average OPD waiting time</div>
+          </div>
+          <div class="impact-card">
+            <div class="impact-val" data-count="62" data-suffix="%" id="impact-2">62%</div>
+            <div class="impact-label">Decrease in unnecessary repeat visits for report collection</div>
+          </div>
+          <div class="impact-card">
+            <div class="impact-val" data-count="91" data-suffix="%" id="impact-3">91%</div>
+            <div class="impact-label">Referral closure rate (vs 48% manual)</div>
+          </div>
+          <div class="impact-card">
+            <div class="impact-val" data-count="2" data-suffix=" days" id="impact-4">2 days</div>
+            <div class="impact-label">Reduction in average length of stay due to faster discharge workflow</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── TESTIMONIALS ───────────────────────────────────────── -->
+    <section class="section testimonials-bg" aria-labelledby="testimonials-heading">
+      <div class="container">
+        <div class="section-intro reveal">
+          <div class="section-label">From the Field</div>
+          <h2 id="testimonials-heading">Feedback from hospitals and patients</h2>
+        </div>
+
+        <div class="testimonials-grid reveal">
+          <div class="testimonial-card">
+            <div class="testimonial-quote">Before this, I had to travel 14 km to find out the doctor was not available that day. Now I check on my phone before leaving home. This has saved me more than one wasted trip.</div>
+            <div class="testimonial-author">
+              <div class="avatar avatar-md">KD</div>
+              <div>
+                <div class="testimonial-name">Kamla Devi</div>
+                <div class="testimonial-role">Patient, Thane Civil Hospital</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card">
+            <div class="testimonial-quote">I can see which patients are waiting, what labs are pending, and who needs discharge sign-off — all in one screen. It has genuinely reduced how much time I spend hunting for information between patients.</div>
+            <div class="testimonial-author">
+              <div class="avatar avatar-md avatar-navy">PM</div>
+              <div>
+                <div class="testimonial-name">Dr. P. Menon</div>
+                <div class="testimonial-role">Associate Professor, General Medicine</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card">
+            <div class="testimonial-quote">We used to find out about discharge bottlenecks at the end of the day. Now I can see exactly which beds are blocked and why, and I can act on it before it becomes a problem for the next admission.</div>
+            <div class="testimonial-author">
+              <div class="avatar avatar-md" style="background:rgba(30,58,95,0.1);color:var(--brand-navy)">MS</div>
+              <div>
+                <div class="testimonial-name">Dr. M. Sawant</div>
+                <div class="testimonial-role">Medical Superintendent, RGGMCH</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── ABOUT ──────────────────────────────────────────────── -->
+    <section class="section features-bg" id="about" aria-labelledby="about-heading">
+      <div class="container-sm">
+        <div class="text-center reveal">
+          <div class="section-label">Our Mission</div>
+          <h2 id="about-heading" style="margin-bottom:var(--space-6)">A public-health coordination layer for India</h2>
+          <p style="color:var(--text-muted);line-height:var(--leading-relaxed);margin-bottom:var(--space-6);">
+            Chikitsaalye is not a telemedicine platform and not a private healthcare product. It is a coordination infrastructure designed specifically for government hospitals, district medical colleges, and public-health systems in India.
+          </p>
+          <p style="color:var(--text-muted);line-height:var(--leading-relaxed);margin-bottom:var(--space-6);">
+            The system is built to operate under the real constraints of Indian public health — low bandwidth, multilingual patient populations, heavy OPD loads, limited staffing, and complex inter-departmental workflows that paper-based systems cannot support at scale.
+          </p>
+          <p style="color:var(--text-muted);line-height:var(--leading-relaxed);">
+            Our goal is to reduce the gap between patients who need care and the clinical staff and infrastructure that can provide it — by making status, next steps, and pending actions visible to everyone who needs to act on them.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── FINAL CTA ──────────────────────────────────────────── -->
+    <section class="cta-section" aria-labelledby="cta-heading">
+      <div class="container">
+        <div class="section-label" style="color:#67E8F9;justify-content:center;display:flex;">Get Started</div>
+        <h2 id="cta-heading">Ready to bring Chikitsaalye<br>to your hospital?</h2>
+        <p>We work with district hospitals, government medical colleges, and public-health systems. Setup is guided and training is included.</p>
+        <div class="cta-actions">
+          <a href="patient-dashboard.html" class="btn btn-primary btn-xl" id="cta-patient-btn">Try Patient View</a>
+          <a href="admin-dashboard.html"   class="btn btn-outline btn-xl" style="border-color:rgba(255,255,255,0.3);color:rgba(255,255,255,0.85);" id="cta-admin-btn">View Admin Dashboard</a>
+        </div>
+        <div style="margin-top:var(--space-8);font-size:var(--text-sm);color:rgba(255,255,255,0.35);">
+          For hospital partnership inquiries: <a href="mailto:partner@chikitsaalye.in" style="color:rgba(255,255,255,0.55);">partner@chikitsaalye.in</a> · 
+          For support: <a href="tel:18001020000" style="color:rgba(255,255,255,0.55);">1800-102-0000</a> (Toll-free)
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ── FOOTER ─────────────────────────────────────────────── -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="nav-logo" style="margin-bottom:var(--space-4);">
+            <div class="nav-logo-mark">⚕</div>
+            <div class="nav-logo-text">
+              <span class="nav-logo-name" style="color:white">Chikitsaalye</span>
+              <span class="nav-logo-tagline">Hospital Coordination Platform</span>
+            </div>
+          </div>
+          <div class="footer-brand-desc">A public-health coordination platform for government hospitals and medical colleges in India. Built to reduce waiting, improve handoffs, and make patient journeys visible.</div>
+          <div style="margin-top:var(--space-5);font-size:var(--text-xs);color:rgba(255,255,255,0.25);">ABDM-aligned · NHM-integrated · PMJAY-compatible</div>
+        </div>
+
+        <div>
+          <div class="footer-col-title">Platform</div>
+          <div class="footer-links">
+            <a href="patient-dashboard.html" class="footer-link">Patient Interface</a>
+            <a href="doctor-dashboard.html"  class="footer-link">Doctor Interface</a>
+            <a href="admin-dashboard.html"   class="footer-link">Admin Dashboard</a>
+            <a href="#features"              class="footer-link">Features</a>
+          </div>
+        </div>
+
+        <div>
+          <div class="footer-col-title">For Hospitals</div>
+          <div class="footer-links">
+            <a href="#" class="footer-link">Request Demo</a>
+            <a href="#" class="footer-link">Partner with Us</a>
+            <a href="#" class="footer-link">Implementation Guide</a>
+            <a href="#" class="footer-link">Training &amp; Support</a>
+          </div>
+        </div>
+
+        <div>
+          <div class="footer-col-title">Information</div>
+          <div class="footer-links">
+            <a href="#about"  class="footer-link">About Us</a>
+            <a href="#"       class="footer-link">Privacy Policy</a>
+            <a href="#"       class="footer-link">Terms of Use</a>
+            <a href="#"       class="footer-link">Contact</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>© 2026 Chikitsaalye. All rights reserved.</div>
+        <div style="display:flex;align-items:center;gap:4px;">
+          <span>Designed for India's public health system</span>
+          <span style="color:rgba(255,255,255,0.2);">·</span>
+          <span>Made with ♥ for patients who wait</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/data.js"></script>
+  <script src="js/utils.js"></script>
+  <script src="js/homepage.js"></script>
+</body>
+</html>
